@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.articleSidebar {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-left: 20px;
+  gap: 15px;
+}
+
+.articleAvatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.articleInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorName {
+  font-weight: 400;
+  font-size: $middle-size-text;
+}
+
+.articleDate {
+  font-size: $small-size-text;
+  color: $tag-color;
+}

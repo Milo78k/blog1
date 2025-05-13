@@ -1,0 +1,62 @@
+@import "../../styles/variables";
+
+.articleCard,
+.articlePage {
+  padding: 20px;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  background: $white-color;
+  max-width: 938px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.cardDescription {
+  font-size: 16px;
+  color: $text-color;
+}
+
+.fullDescription {
+  font-size: 16px;
+  color: $text-color;
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-self: flex-end;
+}
+
+.deleteBtn,
+.editBtn {
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  border: 1px solid $red-color;
+  color: $red-color;
+  background: $white-color;
+}
+
+.editBtn {
+  border: 1px solid $green-color;
+  color: $green-color;
+  background: $white-color;
+}

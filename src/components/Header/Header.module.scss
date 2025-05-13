@@ -1,0 +1,171 @@
+@import "../../styles/variables";
+
+.header {
+  background-color: $white-color;
+  border-bottom: 1px solid #e5e5e5;
+  height: 80px;
+
+  .container {
+    max-width: 100%;
+    padding: 0 5vw;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-size: $middle-size-text;
+    font-weight: 700;
+    color: $dark-text;
+    font-size: 18px;
+    line-height: 28px;
+    text-decoration: none;
+
+    &:hover {
+      color: #1a202c;
+    }
+  }
+
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+
+    .navList {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+
+      li {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .navLink {
+    font-size: 14px;
+    font-weight: 400;
+    color: $dark-text;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      background-color: $hover-bg;
+      color: $green-color;
+      border-radius: 5px;
+      padding: 0.5rem 0.75rem;
+      text-decoration: none;
+    }
+
+    &_signUp {
+      color: $green-color;
+      padding: 0.5rem 0.75rem;
+      border-radius: 5px;
+      border: 1px solid $green-color;
+      text-decoration: none;
+
+      &:hover {
+        background-color: $hover-bg;
+        color: $green-color;
+      }
+    }
+  }
+
+  .createBtn {
+    font-size: 14px;
+    font-weight: 400;
+    color: $green-color;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    border: 1px solid $green-color;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $hover-bg;
+      color: white;
+    }
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+
+    .profileLink {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 14px;
+      line-height: 1.6;
+      text-decoration: none;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  .avatar {
+    width: 2.875rem;
+    height: 2.875rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .username {
+    font-size: 14px;
+    color: $dark-text;
+  }
+
+  .logoutBtn {
+    font-size: 14px;
+    line-height: 1.6;
+    background: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      background-color: $hover-bg;
+      color: $green-color;
+    }
+  }
+  @media (max-width: 768px) {
+    .logo,
+    .createBtn,
+    .navLink,
+    .profileLink {
+      font-size: $small-size-text;
+      padding: 4px 6px;
+    }
+  }
+  @media (max-width: 508px) {
+    .logo,
+    .createBtn,
+    .navLink,
+    .profileLink {
+      font-size: 14px;
+      padding: 4px 6px;
+      border: none;
+    }
+    .navList {
+      gap: 0.5rem !important;
+      flex-wrap: nowrap !important;
+      border: none;
+    }
+  }
+}

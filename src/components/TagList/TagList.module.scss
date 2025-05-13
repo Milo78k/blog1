@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.tagList {
+  margin-top: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 3px;
+  font-size: 12px;
+  border: 1px solid $tag-color;
+}

@@ -1,0 +1,23 @@
+@import "../../styles/variables";
+
+.likeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: $label-color;
+  transition: color 0.2s ease;
+
+  &.liked {
+    color: $heart-color;
+  }
+}
+.likeButton {
+  background: none;
+  padding: 4px 10px;
+  cursor: pointer;
+  border: none;
+}

@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+
+.error {
+  list-style: none;
+  padding: 12px 16px;
+  margin: 16px 0;
+  background-color: $background-light;
+  border: 1px solid $heart-color;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: $heart-color;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.errorItem {
+  position: relative;
+  padding-left: calc($icon-size + 12px);
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: "⚠";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: $icon-size;
+    line-height: 1.2;
+    transform: translateY(2px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

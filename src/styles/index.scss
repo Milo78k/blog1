@@ -1,0 +1,36 @@
+@import "./variables";
+@import "./normalize.css";
+@import "./reset.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 2;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 420px;
+  height: 100%;
+  background-color: $background-color;
+  color: $text-color;
+}

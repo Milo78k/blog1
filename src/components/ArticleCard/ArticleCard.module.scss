@@ -1,0 +1,99 @@
+@import "../../styles/variables";
+
+.articleCard {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  background-color: $white-color;
+  gap: 10px;
+  width: 938px;
+  height: 140px;
+  box-sizing: border-box;
+}
+
+.articleMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.articleContent {
+  flex: 1;
+}
+
+.articleTop {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.articleTitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    color: #1890ff;
+  }
+}
+
+.articleDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: $text-color;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.likeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: $text-color;
+  padding: 4px 10px;
+  transition: color 0.2s ease;
+
+  &.liked {
+    color: $heart-color;
+  }
+}
+@media (max-width: 1180px) {
+  .articleCard {
+    width: 90%;
+  }
+}
+@media (max-width: 480px) {
+  .articleCard {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+  }
+
+  .articleMain {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .articleTitle {
+    font-size: $middle-size-text;
+  }
+
+  .articleDescription {
+    font-size: 14px;
+    -webkit-line-clamp: 3;
+  }
+
+  .likeButton {
+    align-self: flex-start;
+    padding: 0;
+  }
+}
