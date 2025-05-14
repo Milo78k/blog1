@@ -98,3 +98,22 @@
   background-color: #fff1f0;
   outline: none;
 }
+
+.signIn__note {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #d93025;
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
