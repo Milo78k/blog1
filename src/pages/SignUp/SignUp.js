@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../store/userSlice";
@@ -8,6 +8,7 @@ import ErrorMessage from "../../components/ErrorMessage";
 export default function SignUp() {
   const dispatch = useDispatch();
   const serverError = useSelector((state) => state.user.errors);
+  const [triedSubmit, setTriedSubmit] = useState(false);
 
   const {
     register,
@@ -29,15 +30,24 @@ export default function SignUp() {
     }
   }, [serverError, setError]);
 
-  const onSubmit = (data) => {
-    const { username, email, password } = data;
-    dispatch(registerUser({ username, email, password }));
+  const onValid = (data) => {
+    dispatch(
+      registerUser({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      })
+    );
     reset();
+  };
+
+  const onInvalid = () => {
+    setTriedSubmit(true);
   };
 
   return (
     <section className={styles.formWrapper}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <form onSubmit={handleSubmit(onValid, onInvalid)} className={styles.form}>
         <h2 className={styles.title}>Create new account</h2>
 
         <ErrorMessage errors={serverError} />
@@ -118,14 +128,14 @@ export default function SignUp() {
 
         {errors.agreement && <p>{errors.agreement.message}</p>}
 
-        <button
-          type="submit"
-          className={styles.submitButton}
-          disabled={!isValid}
-        >
+        <button type="submit" className={styles.submitButton}>
           Create
         </button>
-
+        {triedSubmit && !isValid && (
+          <p className={styles.note}>
+            Please fill in all fields correctly before submitting.
+          </p>
+        )}
         <p className={styles.redirect}>
           Already have an account? <a href="/sign-in">Sign In</a>
         </p>
