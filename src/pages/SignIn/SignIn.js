@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/userSlice";
@@ -10,6 +10,7 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const history = useHistory();
   const serverError = useSelector((state) => state.user.errors);
+  const [triedSubmit, setTriedSubmit] = useState(false);
 
   const {
     register,
@@ -19,6 +20,7 @@ export default function SignIn() {
   } = useForm({ mode: "onBlur" });
 
   const onSubmit = async (data) => {
+    setTriedSubmit(true);
     const resultAction = await dispatch(loginUser(data));
 
     if (loginUser.rejected.match(resultAction)) {
@@ -68,11 +70,16 @@ export default function SignIn() {
         <button
           type="submit"
           className={styles.signIn__button}
-          disabled={!isValid}
+          disabled={isSubmitting}
         >
           {isSubmitting ? "Logging in..." : "Login"}
         </button>
 
+        {triedSubmit && !isValid && (
+          <p className={styles.signIn__note}>
+            Please fill in all required fields to proceed.
+          </p>
+        )}
         <p className={styles.signIn__redirect}>
           Don't have an account? <a href="/sign-up">Sign Up</a>
         </p>
