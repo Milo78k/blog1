@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { getErrorMessage } from "../../utils/getErrorMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { likeArticle, unlikeArticle } from "../../store/articlesSlice";
 import ArticleCard from "../../components/ArticleCard";
@@ -25,7 +26,8 @@ const ArticleList = () => {
   };
 
   if (loading) return <LoadingSpinner />;
-  if (error) return <p className={styles.error}>Ошибка: {error}</p>;
+  if (error)
+    return <p className={styles.error}>Ошибка: {getErrorMessage(error)}</p>;
   if (list.length === 0)
     return <p className={styles.empty}>Статей пока нет.</p>;
 
