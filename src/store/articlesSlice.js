@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getErrorMessage } from "../utils/getErrorMessage";
 
 const API_URL = "https://blog-platform.kata.academy/api/articles";
 
@@ -156,7 +157,7 @@ const articlesSlice = createSlice({
       })
       .addCase(fetchArticles.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = getErrorMessage(action.payload || action.error?.message);
       })
       .addCase(fetchArticleBySlug.pending, (state) => {
         state.loading = true;
@@ -169,7 +170,7 @@ const articlesSlice = createSlice({
       })
       .addCase(fetchArticleBySlug.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = getErrorMessage(action.payload || action.error?.message);
       })
       .addCase(createArticle.pending, (state) => {
         state.loading = true;
@@ -208,7 +209,7 @@ const articlesSlice = createSlice({
       })
       .addCase(deleteArticle.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = getErrorMessage(action.payload || action.error?.message);
       })
       .addCase(likeArticle.fulfilled, (state, action) => {
         const updated = action.payload;
