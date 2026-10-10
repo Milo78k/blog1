@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { loadStoredUser } from "./userStorage";
 
 const BASE_URL = "https://blog-platform.kata.academy/api";
 
@@ -66,7 +67,7 @@ export const updateUser = createAsyncThunk(
 );
 
 const initialState = {
-  currentUser: JSON.parse(localStorage.getItem("user")) || null,
+  currentUser: loadStoredUser(),
   token: null,
   errors: {},
 };
@@ -79,7 +80,6 @@ const userSlice = createSlice({
       state.currentUser = null;
       state.token = null;
       state.errors = {};
-      localStorage.removeItem("user");
     },
     clearErrors(state) {
       state.errors = {};
@@ -93,7 +93,6 @@ const userSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.currentUser = action.payload;
         state.errors = {};
-        localStorage.setItem("user", JSON.stringify(action.payload));
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.errors = action.payload;
@@ -101,13 +100,12 @@ const userSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.currentUser = action.payload;
         state.errors = {};
-        localStorage.setItem("user", JSON.stringify(action.payload));
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.errors = action.payload;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.currentUser = action.payload;
+        state.currentUser = { ...state.currentUser, ...action.payload };
         state.errors = null;
       })
       .addCase(updateUser.rejected, (state, action) => {

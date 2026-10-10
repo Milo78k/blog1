@@ -16,7 +16,7 @@ export default function SignUp() {
     watch,
     reset,
     setError,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm({ mode: "onBlur" });
 
   useEffect(() => {
@@ -30,15 +30,18 @@ export default function SignUp() {
     }
   }, [serverError, setError]);
 
-  const onValid = (data) => {
-    dispatch(
+  const onValid = async (data) => {
+    const result = await dispatch(
       registerUser({
         username: data.username,
         email: data.email,
         password: data.password,
-      })
+      }),
     );
-    reset();
+    if (registerUser.fulfilled.match(result)) {
+      reset();
+      setTriedSubmit(false);
+    }
   };
 
   const onInvalid = () => {
@@ -128,7 +131,11 @@ export default function SignUp() {
 
         {errors.agreement && <p>{errors.agreement.message}</p>}
 
-        <button type="submit" className={styles.submitButton}>
+        <button
+          type="submit"
+          className={styles.submitButton}
+          disabled={isSubmitting}
+        >
           Create
         </button>
         {triedSubmit && !isValid && (

@@ -1,1 +1,40 @@
-[https://blog1-nine-navy.vercel.app/](https://blog1-git-main-milo78ks-projects.vercel.app?_vercel_share=YH47XJb7Ww1fOw1s0vFrwLXSIi6Sx2wV)
+# RealWorld Blog
+
+SPA для чтения и публикации статей с регистрацией, входом и редактированием профиля.
+
+[Демо](https://blog1-nine-navy.vercel.app/articles)
+
+## Возможности, реализованные в коде
+
+- Список статей с серверной пагинацией и отдельная страница статьи.
+- Регистрация, вход и выход из аккаунта.
+- Создание, редактирование и удаление статей.
+- Управление тегами и Markdown-контент статей.
+- Добавление и удаление статей из избранного.
+- Редактирование профиля и раздел собственных статей.
+- Формы с React Hook Form и отображением серверных ошибок.
+- Клиентские защищённые маршруты для действий авторизованного пользователя.
+
+## Стек
+
+React, JavaScript, Redux Toolkit, createAsyncThunk, React Router 5, React Hook Form, Axios / Fetch API, Ant Design, SCSS Modules, Create React App.
+
+## Технические решения
+
+Статьи и пользователь разделены на Redux slices. Работа с REST API вынесена из компонентов в async thunks. Форма статьи используется для создания и редактирования.
+
+## Локальный запуск
+
+```bash
+npm ci
+npm run start
+```
+
+`npm run build` — сборка, `npm run lint` — проверка кода.
+
+
+## Проверки и ограничения
+
+`CI=true npm test -- --watchAll=false --runInBand` проверяет нормализацию ошибок API и сохранение обновлённого профиля. Ошибки API преобразуются в текст; повреждённые данные localStorage не мешают запуску приложения.
+
+Backend — внешний RealWorld API Kata Academy; он не входит в репозиторий. Публичное демо обновляется отдельно от этой ветки.
